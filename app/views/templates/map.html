@@ -1,8 +1,8 @@
-<div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-position-top-left uk-padding-remove" style="z-index:1000;max-height:100vh:overflow:hidden">
+<div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-position-top-left uk-padding-remove" style="z-index:1000;max-height:100vh:overflow:hidden">
 	<div class="uk-card-header uk-padding-remove">
 		<search></search>
 	</div>
-    <div class="uk-card-body uk-padding-small ng-scope" ng-if="loading || results || error" style="overflow-y: auto;">
+    <div class="uk-card-body uk-padding-small ng-scope" ng-if="loading || results || error" style="overflow-y: auto;max-height: 80vh;">
         <div ng-if="loading" uk-spinner></div>
         <div ng-if="error">
           {{ error.message }}
@@ -20,7 +20,7 @@
           <ul class="uk-list uk-list-divider">
               <li ng-if="selected.details.formatted_phone_number"><span class="uk-margin-small-right" uk-icon="phone"></span> {{ selected.details.formatted_phone_number }}</li>
               <li ng-if="selected.details.website"><span class="uk-margin-small-right" uk-icon="world"></span>
-                <a href="{{ selected.details.website }}" uk-icon="world">Website</a>
+                <a href="{{ selected.details.website }}">Website</a>
               </li>
           </ul>
         </span>
