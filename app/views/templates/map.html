@@ -1,0 +1,39 @@
+<div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-position-top-left uk-padding-remove" style="z-index:1000;max-height:100vh:overflow:hidden">
+	<div class="uk-card-header uk-padding-remove">
+		<search></search>
+	</div>
+    <div class="uk-card-body uk-padding-small ng-scope" ng-if="loading || results || error" style="overflow-y: auto;">
+        <div ng-if="loading" uk-spinner></div>
+        <div ng-if="error">
+          {{ error.message }}
+        </div>
+        <span class="" ng-if="selected && !loading">
+          <div class="uk-card-media-top">
+            <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url({{ selected.imageUrl }});">
+              <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-padding-small">
+                <h3 class="uk-text-uppercase uk-margin-remove uk-margin-bottom">{{ selected.name }}</h3>
+                <span class="uk-label uk-label-success uk-text-small" ng-if="selected.opening_hours.open_now">Open</span>
+                <p>{{ selected.formatted_address }}</p>
+              </div>
+            </div>
+          </div>
+          <ul class="uk-list uk-list-divider">
+              <li ng-if="selected.details.formatted_phone_number"><span class="uk-margin-small-right" uk-icon="phone"></span> {{ selected.details.formatted_phone_number }}</li>
+              <li ng-if="selected.details.website"><span class="uk-margin-small-right" uk-icon="world"></span>
+                <a href="{{ selected.details.website }}" uk-icon="world">Website</a>
+              </li>
+          </ul>
+        </span>
+        <ul class="uk-list uk-list-divider ng-scope" ng-if="results || !loading && !selected">
+          <li ng-repeat="r in results" ng-click="show(r,$index)" class="ng-scope" ng-if="!selected">
+            <a ng-click="select(r)">
+              <p class="uk-margin-remove">{{ r.name }} <span class="uk-text-small uk-text-muted">{{ r.formatted_address }}</span></p>
+            </a>
+          </li>
+        </ul>
+    </div>
+    <div class="uk-card-footer" ng-if="selected">
+      <button class="uk-button uk-button-link uk-width-1-1 uk-text-uppercase" ng-click="back()" ng-if="selected">back to results</button>
+    </div>
+</div>
+<div class="uk-cover-container" uk-height-viewport id="map"></div>
