@@ -3,11 +3,11 @@ Angular JS search directive powered by Google Search Places API
 
 ## Build & development
 
-Run `bower install --save` and `npm install --save` to install dependencies
+Run `npm install && bower install` and `npm install --save` to install dependencies
 
-Run `npm install grunt --save-dev` and `npm install -g grunt-cl` to install grunt
+Run `npm install grunt && npm install grunt-cli` to install grunt
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt build` to build and `grunt serve` to launch the application.
 
 ## Testing
 
